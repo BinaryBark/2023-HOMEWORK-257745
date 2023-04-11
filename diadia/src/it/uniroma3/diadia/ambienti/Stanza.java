@@ -1,3 +1,7 @@
+package it.uniroma3.diadia.ambienti;
+
+import it.uniroma3.diadia.attrezzi.Attrezzo;
+
 /**
  * Classe Stanza - una stanza in un gioco di ruolo.
  * Una stanza e' un luogo fisico nel gioco.
@@ -164,8 +168,22 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzo) {
-		// TODO da implementare
-		return false;
+		if(attrezzo!=null){
+			int i = 0;
+			for(Attrezzo a : this.attrezzi) {
+				if(a != null) {
+					if(a.getNome().equals(attrezzo.getNome())) {
+						this.attrezzi[i] = null;
+						this.numeroAttrezzi--;
+					}
+				}
+				i++;
+
+			}
+			return true;
+		}
+		else
+			return false;
 	}
 
 
