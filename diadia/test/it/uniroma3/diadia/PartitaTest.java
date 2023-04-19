@@ -1,25 +1,34 @@
 package it.uniroma3.diadia;
 
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import it.uniroma3.diadia.ambienti.*;
+import it.uniroma3.diadia.giocatore.*;
+
 public class PartitaTest {
 
+	Partita p1 = new Partita();
+	Labirinto l1 = new Labirinto();
+	Giocatore g1 = new Giocatore();
+	Stanza s1 = new Stanza("stanza");
+	
+	
 	@Test
 	public void testGetStanzaVincente() {
-		fail("Not yet implemented");
+		assertEquals("Biblioteca", l1.getStanzaVincente());
 	}
 
 	@Test
 	public void testGetStanzaCorrente() {
-		fail("Not yet implemented");
+		assertNull(p1.getStanzaCorrente());
 	}
 
 	@Test
 	public void testGetCfu() {
-		fail("Not yet implemented");
+		assertNull(g1.getCfu());
 	}
 
 }
