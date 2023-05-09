@@ -10,17 +10,15 @@ import java.util.Scanner;
  * su cui si applica il comando.
  * (Ad es. alla riga digitata dall'utente "vai nord"
  *  corrisponde un comando di nome "vai" e parametro "nord").
- *
- * @author  docente di POO
- * @version base
+
  */
 
-public class Comando {
+public interface Comando {
 
-    private String nome;
-    private String parametro;
+	private String nome;
+	private String parametro;
 
-    public Comando(String istruzione) {
+	public Comando(String istruzione) {
 		Scanner scannerDiParole = new Scanner(istruzione);
 
 		// prima parola: nome del comando
@@ -31,17 +29,28 @@ public class Comando {
 		if (scannerDiParole.hasNext())
 			this.parametro = scannerDiParole.next();
 		scannerDiParole.close();
-    }
+	}
 
-    public String getNome() {
-        return this.nome;
-    }
+	/**
+	 * esecuzione del comando
+	 */
+	public void esegui(Partita partita);
+	/**
+	 * set parametro del comando
+	 */
+	public void setParametro(String parametro);
 
-    public String getParametro() {
-        return this.parametro;
-    }
 
-    public boolean sconosciuto() {
-        return (this.nome == null);
-    }
+
+	public String getNome() {
+		return this.nome;
+	}
+
+	public String getParametro() {
+		return this.parametro;
+	}
+
+	public boolean sconosciuto() {
+		return (this.nome == null);
+	}
 }

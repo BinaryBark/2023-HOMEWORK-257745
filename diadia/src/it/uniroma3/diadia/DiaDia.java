@@ -55,12 +55,23 @@ public class DiaDia {
 		
 	}   
 
-
+	private boolean processaIstruzione(String istruzione) {
+		Comando comandoDaEseguire;
+		FabbricaDiComandi factory = new FabbricaDiComandi()
+		comandoDaEseguire = factory.costruisciComando(istruzione);
+		comandoDaEseguire.esegui(this.partita);
+		if (this.partita.vinta())
+		System.out.println("Hai vinto!");
+		if (!this.partita.giocatoreIsVivo())
+		System.out.println("Hai esaurito i CFU...");
+		return this.partita.isFinita();
+		}
+	
 	/**
-	 * Processa una istruzione 
+	 * OLD PROCESSA ISTRUZIONE OLD
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
-	 */
+	
 	private boolean processaIstruzione(String istruzione) {
 		Comando comandoDaEseguire = new Comando(istruzione);
 
@@ -84,13 +95,10 @@ public class DiaDia {
 			return false;
 	}   
 
-	// implementazioni dei comandi dell'utente:
+	 */
 	
-	private void prendi(String nomeAttrezzo){
-		Attrezzo a = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
-		this.partita.getGiocatore().getBorsa().addAttrezzo(a);
-		this.partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
-	}
+	// EX implementazioni dei comandi dell'utente:
+
 
 	private void posa(String nomeAttrezzo) {
 		Attrezzo a = this.partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
