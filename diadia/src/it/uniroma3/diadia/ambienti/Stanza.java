@@ -72,7 +72,7 @@ public class Stanza {
 	}
 
     /**
-     * Restituisce la nome della stanza.
+     * Restituisce il nome della stanza.
      * @return il nome della stanza
      */
     public String getNome() {
@@ -98,7 +98,7 @@ public class Stanza {
     /**
      * Mette un attrezzo nella stanza.
      * @param attrezzo l'attrezzo da mettere nella stanza.
-     * @return true se riesce ad aggiungere l'attrezzo, false atrimenti.
+     * @return true se riesce ad aggiungere l'attrezzo, false altrimenti.
      */
     public boolean addAttrezzo(Attrezzo attrezzo) {
         if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) {
@@ -186,7 +186,10 @@ public class Stanza {
 			return false;
 	}
 
-
+	public int getNumeroAttrezziPossibili() {
+		return NUMERO_MASSIMO_ATTREZZI-this.numeroAttrezzi;
+	}
+	
 	public String[] getDirezioni() {
 		String[] direzioni = new String[this.numeroStanzeAdiacenti];
 	    for(int i=0; i<this.numeroStanzeAdiacenti; i++)

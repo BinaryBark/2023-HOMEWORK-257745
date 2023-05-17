@@ -1,6 +1,8 @@
-package it.uniroma3.diadia;
+package it.uniroma3.diadia.comandi;
 
 import java.util.Scanner;
+
+import it.uniroma3.diadia.IO;
 
 public class FabbricaDiComandiFisarmonica {
 
@@ -36,7 +38,8 @@ public class FabbricaDiComandiFisarmonica {
 		else comando = new ComandoNonValido();
 		comando.setParametro(parametro);
 		comando.setIo(this.io);
+		scannerDiParole.close();  //facoltativo
 		return comando;
-		//scannerDiParole.close();
+		
 	}
 }

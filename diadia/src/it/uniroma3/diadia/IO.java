@@ -1,5 +1,8 @@
 package it.uniroma3.diadia;
 
-public class IO {
+public interface IO {
 
+	public void mostraMessaggio(String msg);
+
+	public String leggiRiga();
 }

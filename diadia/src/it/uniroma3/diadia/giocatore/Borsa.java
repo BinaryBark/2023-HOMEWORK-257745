@@ -68,7 +68,11 @@ public class Borsa {
 		}
 		return a;
 	}
-
+	
+	public int getPesoRimanente(Attrezzo a) {
+		return this.getPesoMax()-this.getPeso();
+	}
+	
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		if (!this.isEmpty()) {
@@ -80,5 +84,7 @@ public class Borsa {
 			s.append("Borsa vuota");
 		return s.toString();
 	}
+
+	
 
 }

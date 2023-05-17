@@ -73,6 +73,10 @@ public class Partita {
 		return giocatore;
 	}
 
+	public boolean giocatoreIsVivo( ) {
+		return this.getGiocatore().getCfu()>0;
+	}
+	
 	public void setGiocatore(Giocatore giocatore) {
 		this.giocatore = giocatore;
 	}

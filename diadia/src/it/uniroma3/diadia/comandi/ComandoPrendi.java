@@ -10,11 +10,11 @@ public class ComandoPrendi implements Comando {
 	private String nomeAttrezzo;
 	private final static String NOME = "prendi";
 
-	
+
 	@Override
 	public void esegui(Partita partita) {
 		Attrezzo a = partita.getLabirinto().getStanzaCorrente().getAttrezzo(nomeAttrezzo);
-		if(partita.getGiocatore().getBorsa().getPesoRimanente(a)) {
+		if(partita.getGiocatore().getBorsa().getPesoRimanente(a)>0) {
 			partita.getGiocatore().getBorsa().addAttrezzo(a);
 			partita.getLabirinto().getStanzaCorrente().removeAttrezzo(a);
 		} 
@@ -38,12 +38,12 @@ public class ComandoPrendi implements Comando {
 	public void setIo(IO io) {
 		this.io = io;
 	}
-	
+
 	@Override
 	public String getNome() {
 		return NOME;
 	}
 
-	
+
 
 }
