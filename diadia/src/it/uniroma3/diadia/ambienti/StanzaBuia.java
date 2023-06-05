@@ -13,6 +13,7 @@ public class StanzaBuia {
 	private Stanza[] stanzeAdiacenti;
 	private int numeroStanzeAdiacenti;
 	private String[] direzioni;
+	private IO io;
 
 	/**
 	 * Crea una stanza. Non ci sono stanze adiacenti, non ci sono attrezzi.
@@ -25,6 +26,7 @@ public class StanzaBuia {
 		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
 		this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+
 	}
 
 	/**
@@ -73,7 +75,7 @@ public class StanzaBuia {
 	 * @return la descrizione della stanza
 	 */
 	public String getDescrizione() {
-		IO io = new IO;
+		
 		if(hasAttrezzo("lanterna")) {
 			io.mostraMessaggio("Qui è buio pesto");  
 		}
