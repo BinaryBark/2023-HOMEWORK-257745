@@ -38,7 +38,7 @@ public class DiaDia {
 	//static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
 
 	private Partita partita;
-	private Giocatore giocatore;
+	//private Giocatore giocatore;
 	private IO io;
 
 	public DiaDia(IO console) {

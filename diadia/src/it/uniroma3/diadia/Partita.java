@@ -54,11 +54,11 @@ public class Partita {
 	}
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
+		this.getLabirinto().setStanzaCorrente(stanzaCorrente);
 	}
 
 	public Stanza getStanzaCorrente() {
-		return this.stanzaCorrente;
+		return this.getLabirinto().getStanzaCorrente();
 	}
 	
 	public Labirinto getLabirinto() {
