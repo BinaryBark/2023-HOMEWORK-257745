@@ -20,7 +20,7 @@ public class StanzaTest {
 	
 	@Test
 	public void testImpostaStanzaAdiacente() {
-		s1.impostaStanzaAdiacente("sud", s1);
+		s1.impostaStanzaAdiacente("sud", s2);
 		assertEquals(s2, s1.getStanzaAdiacente("sud"));
 	}
 	

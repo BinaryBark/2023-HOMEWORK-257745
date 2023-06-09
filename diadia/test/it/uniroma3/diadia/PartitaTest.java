@@ -18,17 +18,18 @@ public class PartitaTest {
 	
 	@Test
 	public void testGetStanzaVincente() {
-		assertEquals("Biblioteca", l1.getStanzaVincente());
+		//Stanza b = new Stanza("Biblioteca");
+		assertEquals("Biblioteca", l1.getStanzaVincente().getNome());
 	}
 
 	@Test
 	public void testGetStanzaCorrente() {
-		assertNull(p1.getStanzaCorrente());
+		assertNotNull(p1.getStanzaCorrente());
 	}
 
 	@Test
 	public void testGetCfu() {
-		assertNull(g1.getCfu());
+		assertNotNull(g1.getCfu());
 	}
 
 }
