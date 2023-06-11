@@ -25,10 +25,12 @@ public class Borsa {
 	}
 
 	public boolean addAttrezzo(Attrezzo attrezzo) {
-		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax())
+		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax()) {
 			return false;
-		if (this.numeroAttrezzi==10)
+		}
+		if (this.numeroAttrezzi>=10) {
 			return false;
+		}
 		//this.attrezzi[this.numeroAttrezzi] = attrezzo;
 		this.numeroAttrezzi++;
 		return this.attrezzi.add(attrezzo);
@@ -38,7 +40,7 @@ public class Borsa {
 	public int getPesoMax() {
 		return pesoMax;
 	}
-/*
+	/*
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo a = null;
 		for (int i= 0; i<this.numeroAttrezzi; i++)
@@ -46,23 +48,23 @@ public class Borsa {
 				a = attrezzi[i];
 		return a;
 	}
-	*/
+	 */
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
-	    Attrezzo a = null;
-	    for (Attrezzo attrezzo : this.attrezzi) {
-	        if (attrezzo.getNome().equals(nomeAttrezzo)) {
-	            a = attrezzo;
-	            break;
-	        }
-	    }
-	    return a;
+		Attrezzo a = null;
+		for (Attrezzo attrezzo : this.attrezzi) {
+			if (attrezzo.getNome().equals(nomeAttrezzo)) {
+				a = attrezzo;
+				break;
+			}
+		}
+		return a;
 	}
 
 	public int getPeso() {
 		int peso = 0;
 		for (Attrezzo attrezzo : attrezzi)
 			peso += attrezzo.getPeso();
-			//peso += this.attrezzi[i].getPeso();
+		//peso += this.attrezzi[i].getPeso();
 		return peso;
 	}
 
@@ -80,21 +82,21 @@ public class Borsa {
 		if(nomeAttrezzo!=null) {
 			while(iterator.hasNext()) {
 				Attrezzo attrezzo = iterator.next();
-	            if (attrezzo.getNome().equals(nomeAttrezzo)) {
-	                a = attrezzo;
-	                iterator.remove();
-	                break;
-	            }
-	        }
-	    }
-	    return a;
+				if (attrezzo.getNome().equals(nomeAttrezzo)) {
+					a = attrezzo;
+					iterator.remove();
+					break;
+				}
+			}
+		}
+		return a;
 	}
 
-	
+
 	public int getPesoRimanente(Attrezzo a) {
 		return this.getPesoMax()-this.getPeso();
 	}
-	
+
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		if (!this.isEmpty()) {

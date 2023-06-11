@@ -156,11 +156,11 @@ public class Stanza {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
-			if(attrezzo != null)  //aggiunto dopo
-				if (attrezzo.getNome().equals(nomeAttrezzo))
-					
-				attrezzoCercato = attrezzo;
-		}
+			if(attrezzo != null)  {//aggiunto dopo
+				if (attrezzo.getNome().equals(nomeAttrezzo)) {
+					attrezzoCercato = attrezzo;
+				}
+			}}
 		return attrezzoCercato;	
 	}
 
