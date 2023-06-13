@@ -2,16 +2,23 @@ package it.uniroma3.diadia.giocatore;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeMap;
+import java.util.TreeSet;
 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 public class Borsa {
 
 	public final static int DEFAULT_PESO_MAX_BORSA = 10;
-	private List<Attrezzo> attrezzi;
+	private Map<String, Attrezzo> nome2attrezzi;
+	//private List<Attrezzo> attrezzi;
 	//private Attrezzo[] attrezzi;
 	private int numeroAttrezzi;
 	private int pesoMax;
+	private int pesoAttuale;
 
 	public Borsa() {
 		this(DEFAULT_PESO_MAX_BORSA);
@@ -19,22 +26,21 @@ public class Borsa {
 
 	public Borsa(int pesoMax) {
 		this.pesoMax = pesoMax;
-		this.attrezzi = new ArrayList<Attrezzo>();
+		this.nome2attrezzi = new TreeMap<>();
+		//this.attrezzi = new ArrayList<Attrezzo>();
 		//this.attrezzi = new Attrezzo[10]; // speriamo bastino...
 		this.numeroAttrezzi = 0;
+		this.pesoAttuale = 0; 
 	}
 
 	public boolean addAttrezzo(Attrezzo attrezzo) {
 		if (this.getPeso() + attrezzo.getPeso() > this.getPesoMax()) {
 			return false;
 		}
-		if (this.numeroAttrezzi>=10) {
-			return false;
-		}
-		//this.attrezzi[this.numeroAttrezzi] = attrezzo;
+		this.nome2attrezzi.put(attrezzo.getNome(), attrezzo);
 		this.numeroAttrezzi++;
-		return this.attrezzi.add(attrezzo);
-		//return true;
+		this.pesoAttuale += attrezzo.getPeso();
+		return true;
 	}
 
 	public int getPesoMax() {
@@ -51,21 +57,14 @@ public class Borsa {
 	 */
 	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo a = null;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo)) {
-				a = attrezzo;
-				break;
-			}
+		if(nomeAttrezzo != null && nome2attrezzi.containsKey(nomeAttrezzo)) {
+			a = this.nome2attrezzi.get(nomeAttrezzo);
 		}
 		return a;
 	}
 
 	public int getPeso() {
-		int peso = 0;
-		for (Attrezzo attrezzo : attrezzi)
-			peso += attrezzo.getPeso();
-		//peso += this.attrezzi[i].getPeso();
-		return peso;
+		return this.pesoAttuale;
 	}
 
 	public boolean isEmpty() {
@@ -77,17 +76,10 @@ public class Borsa {
 	}
 
 	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
-		Iterator<Attrezzo> iterator = attrezzi.iterator();
-		Attrezzo a = null;
+		Attrezzo a = null ;
+
 		if(nomeAttrezzo!=null) {
-			while(iterator.hasNext()) {
-				Attrezzo attrezzo = iterator.next();
-				if (attrezzo.getNome().equals(nomeAttrezzo)) {
-					a = attrezzo;
-					iterator.remove();
-					break;
-				}
-			}
+			a = nome2attrezzi.remove(nomeAttrezzo);
 		}
 		return a;
 	}
@@ -101,13 +93,40 @@ public class Borsa {
 		StringBuilder s = new StringBuilder();
 		if (!this.isEmpty()) {
 			s.append("Contenuto borsa ("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
-			for (Attrezzo attrezzo : attrezzi)
-				s.append(attrezzo.toString()).append(" ");
+			s.append("\n");
+			s.append(nome2attrezzi.toString()+" ");
+			s.append("\n");
 		}
 		else
 			s.append("Borsa vuota");
 		return s.toString();
 	}
 
+	List<Attrezzo> getContenutoOrdinatoPerPeso(){
+		//restituisce la lista degli attrezzi nella borsa ordinati per peso e quindi, a parità di peso, per nome
+		Set<Attrezzo> s = new TreeSet<>();  //perchè treeset viene inizializzato senza argomenti?
+		s.addAll(this.nome2attrezzi.values());
+		List<Attrezzo> l = new ArrayList<>();  
+		l.addAll(s);
+		return l;
+	}
+	
+	SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso(){
+		restituisce l'insieme gli attrezzi nella borsa
+		ordinati per peso e quindi, a parità di peso, per
+		nome
+	}
+	
+	SortedSet<Attrezzo> getContenutoOrdinatoPerNome(){
+		//restituisce l'insieme degli attrezzi nella borsa ordinati per nome
+		return new TreeSet<Attrezzo>(this.nome2attrezzi.values());
+	}
 
+	Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso(){
+		/*restituisce una mappa che associa un intero (rappresentante un peso) con l’insieme 
+		 * (comunque non vuoto) degli attrezzi di tale peso: tutti gli attrezzi dell'insieme che 
+		 * figura come valore hanno lo stesso peso pari all'intero che figura come chiave*/
+		Map<Integer, Set<Attrezzo>> a2p = new TreeMap<>();
+		
+	}
 }

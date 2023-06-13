@@ -5,9 +5,9 @@ public class StanzaBloccata extends Stanza{
 	private String direzioneBloccata;
 	private String passepartout;
 	
-	public StanzaBloccata(String nome, String diredirezioneBloccata, String passepartout) {
+	public StanzaBloccata(String nome, String direzioneBloccata, String passepartout) {
 		super(nome);
-		this.direzioneBloccata = diredirezioneBloccata;
+		this.direzioneBloccata = direzioneBloccata;
 		this.passepartout = passepartout;
 	}
 	
